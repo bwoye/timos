@@ -1,0 +1,24 @@
+<?php
+/**
+ * Tables in synergy
+ */
+define("TBL_EMPLOYERS","employers");
+define("TBL_DISTRICTS","districts");
+define("TBL_ACCREPORT","accreport");
+define("TBL_MEDREPORT","medicalreport");
+define("TBL_WAGETYPES","wagetypes");
+define("TBL_EMPWAGES","empwages");
+define("TBL_ACCDETAILS","accdetails");
+define("TBL_BODYINJURE","bodyinjure");
+define("TBL_INJURIES","injurynature");
+define("TBL_ACCPLACES","accplaces");
+define("TBL_ACCTYPES","acctypes");
+define("TBL_ACCAGENTS","accagents");
+define("TBL_ACCMACHINE","accmachines");
+define("TBL_JOBS","jobs");
+define("TBL_DOWHAT","doingwhats");
+define("TBL_PROJDETAILS","projdetails");
+define("TBL_SUBCOUNTY","subcounty");
+define("TBL_IMAGES","images");
+define("TBL_COUNTRY","mycountries");
+define("TBL_BLOG","bloggers");

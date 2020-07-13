@@ -1,0 +1,86 @@
+    <?php
+    $request = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+
+    if (count($request) > 1) {
+        if ($request[1] == "empregister.php") { ?>
+            <link rel="stylesheet" type="text/css" href="styles/emplist1.css">
+        <?php
+        } elseif ($request[1] == "accidentreport.php") { ?>
+            <link rel="stylesheet" type="text/css" href="styles/accidentreport.css">
+            <script src="js/accidentreport.js"></script>
+        <?php
+        } elseif ($request[1] == "changepass.php") { ?>
+            <script src="js/changepass.js"></script>
+    <?php }
+    } ?>
+
+    //employer details
+    empdrop
+    edistcode
+    phyadd
+    uemail
+    emptel
+
+    //project details
+    projname
+    projnature
+    projtype
+    siteaddress
+    projdistrict
+    certno
+
+    //injperson details
+    injpname
+    injempadd
+    jobtitle
+    natid
+    race
+    nextofkin
+    gender
+    empage
+    idistcode
+    saza
+    gombolola
+    village
+
+    //Employee earnings
+    monthly
+    weekly
+    daily
+    Others
+
+    //Particulars of accident
+    accdate
+    acctime
+    accplace
+    accdescription
+    workno
+    doingwhat
+    acctype
+    accresult
+    accinjuries
+    bodyinjury
+    hospitalname
+
+    //Medicalreport
+    patientype
+    patientno
+    admindate
+    medicalinjury
+    tempass
+    permass
+    repdate
+    medicalpractitioner
+    officername
+    offposition
+    offdate
+
+    //Hidden
+    empid
+    projid
+    accid
+    wageid
+    medrep
+    idno
+
+{"injpname":"George bakibinga","injempadd":"p. o. box 1254","jobtitle":"3","natid":"54785","race":"54785","nextofkin":"john tabuti","gender":"M","empage":"50","distcode":"27","saza":"kaliro","gombolola":"butege","village":"namugongo","projid":"1Ji","accid":"","monthly":"","weekly":"","daily":"","accdate":"","acctime":"","accplace":"1","accagent":"9","accdescription":"","workno":"no","doingwhat":"1","acctype":"9","accresult":"","accinjuries":"1","bodyinjury":"10","hospital":"","tpercent":"","tfrom":"10","tempto":"10","ppercent":"","pfrom":"10","permto":"10","patientype":"in","patientno":"","admindate":"","medicalinjury":"","repdate":"","medicalpractitioner":"","officername":"","offposition":"","offdate":"","adding":"yes","projediting":"yes"}
