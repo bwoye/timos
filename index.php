@@ -14,6 +14,7 @@ include_once "header.php";
         ?>        
     </div>
 </section>
+<script src="js/starter.js"></script>
 <?php
 include_once "footer.php";
 ?>

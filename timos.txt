@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Linux (x86_64)
 --
 -- Host: localhost    Database: timo
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	8.0.20-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,8 +23,8 @@ DROP TABLE IF EXISTS `accagents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accagents` (
-  `agentid` int(11) NOT NULL AUTO_INCREMENT,
-  `agentname` varchar(100) DEFAULT NULL,
+  `agentid` int NOT NULL AUTO_INCREMENT,
+  `agentname` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`agentid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,8 +47,8 @@ DROP TABLE IF EXISTS `accdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accdetails` (
-  `accid` varchar(8) NOT NULL,
-  `supportimage` varchar(100) DEFAULT 'no',
+  `accid` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `supportimage` varchar(100) COLLATE utf8mb4_general_ci DEFAULT 'no',
   PRIMARY KEY (`accid`),
   CONSTRAINT `accreport_accdetails` FOREIGN KEY (`accid`) REFERENCES `accreport` (`accid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -71,8 +71,8 @@ DROP TABLE IF EXISTS `accmachines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accmachines` (
-  `machineid` int(11) NOT NULL AUTO_INCREMENT,
-  `machinename` varchar(100) DEFAULT NULL,
+  `machineid` int NOT NULL AUTO_INCREMENT,
+  `machinename` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`machineid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -94,8 +94,8 @@ DROP TABLE IF EXISTS `accplaces`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accplaces` (
-  `accplace` int(11) NOT NULL AUTO_INCREMENT,
-  `place` varchar(100) DEFAULT NULL,
+  `accplace` int NOT NULL AUTO_INCREMENT,
+  `place` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`accplace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -118,36 +118,36 @@ DROP TABLE IF EXISTS `accreport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accreport` (
-  `accid` varchar(8) NOT NULL,
-  `projid` varchar(8) DEFAULT NULL,
-  `injpname` varchar(50) DEFAULT NULL,
+  `accid` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `projid` varchar(8) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `injpname` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `accdate` timestamp NULL DEFAULT NULL,
   `acctime` time DEFAULT NULL,
-  `natid` varchar(20) DEFAULT NULL,
-  `nextofkin` varchar(50) DEFAULT NULL,
-  `kinphone` varchar(15) DEFAULT NULL,
-  `race` int(4) DEFAULT '0',
-  `injempadd` varchar(100) DEFAULT NULL,
-  `gender` varchar(6) NOT NULL,
-  `empage` int(3) DEFAULT '0',
-  `jobtitle` int(5) DEFAULT '0',
-  `distcode` int(3) DEFAULT '0',
-  `saza` int(6) DEFAULT '0',
-  `village` varchar(25) DEFAULT NULL,
-  `acctype` int(5) DEFAULT NULL,
-  `accagent` int(5) DEFAULT NULL,
-  `accresult` varchar(20) DEFAULT NULL,
-  `hospital` varchar(50) DEFAULT NULL,
-  `workno` varchar(5) DEFAULT NULL,
-  `accinjuries` int(4) DEFAULT '0',
-  `bodyinjury` int(5) DEFAULT NULL,
-  `accplace` int(5) DEFAULT '0',
-  `accdescription` varchar(50) DEFAULT NULL,
-  `doingwhat` int(5) DEFAULT '0',
-  `monthly` int(11) DEFAULT '0',
-  `wdaily` int(11) DEFAULT '0',
-  `wweekly` int(11) DEFAULT '0',
-  `empid` varchar(8) DEFAULT NULL,
+  `natid` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nextofkin` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `kinphone` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `race` int DEFAULT '0',
+  `injempadd` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `gender` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
+  `empage` int DEFAULT '0',
+  `jobtitle` int DEFAULT '0',
+  `distcode` int DEFAULT '0',
+  `saza` int DEFAULT '0',
+  `village` varchar(25) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `acctype` int DEFAULT NULL,
+  `accagent` int DEFAULT NULL,
+  `accresult` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `hospital` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `workno` varchar(5) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `accinjuries` int DEFAULT '0',
+  `bodyinjury` int DEFAULT NULL,
+  `accplace` int DEFAULT '0',
+  `accdescription` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `doingwhat` int DEFAULT '0',
+  `monthly` int DEFAULT '0',
+  `wdaily` int DEFAULT '0',
+  `wweekly` int DEFAULT '0',
+  `empid` varchar(8) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`accid`),
   KEY `jobs_accreport` (`jobtitle`),
   KEY `projdetails_accreport` (`projid`),
@@ -174,8 +174,8 @@ DROP TABLE IF EXISTS `acctypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acctypes` (
-  `typeno` int(11) NOT NULL AUTO_INCREMENT,
-  `nametype` varchar(100) DEFAULT NULL,
+  `typeno` int NOT NULL AUTO_INCREMENT,
+  `nametype` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`typeno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -198,13 +198,13 @@ DROP TABLE IF EXISTS `bloggers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bloggers` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
-  `emailadd` varchar(100) DEFAULT NULL,
-  `phone` varchar(12) DEFAULT NULL,
-  `fulname` varchar(35) DEFAULT NULL,
-  `employer` varchar(200) DEFAULT NULL,
-  `accplace` varchar(50) DEFAULT NULL,
-  `description` text,
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `emailadd` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(12) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fulname` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `employer` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `accplace` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
   `datereported` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `dateaccident` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idno`)
@@ -229,8 +229,8 @@ DROP TABLE IF EXISTS `bodyinjure`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bodyinjure` (
-  `bno` int(11) NOT NULL AUTO_INCREMENT,
-  `injtype` varchar(20) DEFAULT NULL,
+  `bno` int NOT NULL AUTO_INCREMENT,
+  `injtype` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`bno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -253,7 +253,7 @@ DROP TABLE IF EXISTS `districts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `districts` (
-  `distcode` int(3) NOT NULL AUTO_INCREMENT,
+  `distcode` int NOT NULL AUTO_INCREMENT,
   `distname` varchar(50) DEFAULT NULL,
   `Region` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`distcode`)
@@ -278,8 +278,8 @@ DROP TABLE IF EXISTS `doingwhats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `doingwhats` (
-  `what` int(11) NOT NULL AUTO_INCREMENT,
-  `actions` varchar(100) DEFAULT NULL,
+  `what` int NOT NULL AUTO_INCREMENT,
+  `actions` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`what`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -302,13 +302,13 @@ DROP TABLE IF EXISTS `employers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `employers` (
-  `empid` varchar(8) NOT NULL,
-  `empname` varchar(100) DEFAULT NULL,
-  `phyadd` varchar(100) DEFAULT NULL,
-  `uemail` varchar(100) DEFAULT NULL,
-  `distcode` int(3) DEFAULT '0',
-  `emptel` varchar(15) DEFAULT NULL,
-  `epass` varchar(120) DEFAULT 'No password',
+  `empid` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `empname` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phyadd` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `uemail` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `distcode` int DEFAULT '0',
+  `emptel` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `epass` varchar(120) COLLATE utf8mb4_general_ci DEFAULT 'No password',
   PRIMARY KEY (`empid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -331,10 +331,10 @@ DROP TABLE IF EXISTS `empwages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `empwages` (
-  `accid` varchar(8) NOT NULL,
-  `monthly` int(10) DEFAULT '0',
-  `weekly` int(10) DEFAULT '0',
-  `daily` int(10) DEFAULT '0',
+  `accid` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `monthly` int DEFAULT '0',
+  `weekly` int DEFAULT '0',
+  `daily` int DEFAULT '0',
   PRIMARY KEY (`accid`),
   CONSTRAINT `accreport_empwages` FOREIGN KEY (`accid`) REFERENCES `accreport` (`accid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -357,12 +357,12 @@ DROP TABLE IF EXISTS `factories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `factories` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
-  `empid` varchar(8) DEFAULT NULL,
-  `factoryname` varchar(50) DEFAULT NULL,
-  `phyadd` varchar(100) DEFAULT NULL,
-  `factorytel` varchar(15) DEFAULT NULL,
-  `distcode` int(3) DEFAULT '0',
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `empid` varchar(8) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `factoryname` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phyadd` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `factorytel` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `distcode` int DEFAULT '0',
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -384,10 +384,10 @@ DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `images` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
-  `medreport` varchar(100) DEFAULT NULL,
-  `supimage` varchar(100) DEFAULT NULL,
-  `accid` varchar(8) DEFAULT NULL,
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `medreport` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `supimage` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `accid` varchar(8) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -409,8 +409,8 @@ DROP TABLE IF EXISTS `injurynature`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `injurynature` (
-  `injnature` int(11) NOT NULL AUTO_INCREMENT,
-  `nature` varchar(30) DEFAULT NULL,
+  `injnature` int NOT NULL AUTO_INCREMENT,
+  `nature` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`injnature`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -433,8 +433,8 @@ DROP TABLE IF EXISTS `jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `jobs` (
-  `jobid` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(25) DEFAULT NULL,
+  `jobid` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(25) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`jobid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -457,9 +457,9 @@ DROP TABLE IF EXISTS `medicalreport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `medicalreport` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
-  `accid` varchar(8) DEFAULT NULL,
-  `medname` varchar(100) DEFAULT NULL,
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `accid` varchar(8) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `medname` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`),
   KEY `accreport_medicalreport` (`accid`),
   CONSTRAINT `accreport_medicalreport` FOREIGN KEY (`accid`) REFERENCES `accreport` (`accid`)
@@ -483,8 +483,8 @@ DROP TABLE IF EXISTS `mycountries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mycountries` (
-  `idno` int(3) NOT NULL AUTO_INCREMENT,
-  `namex` varchar(50) DEFAULT NULL,
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `namex` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -507,8 +507,8 @@ DROP TABLE IF EXISTS `myparts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `myparts` (
-  `idno` int(5) NOT NULL AUTO_INCREMENT,
-  `bparts` varchar(25) DEFAULT NULL,
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `bparts` varchar(25) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -531,15 +531,15 @@ DROP TABLE IF EXISTS `projdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `projdetails` (
-  `projid` varchar(8) NOT NULL,
-  `empid` varchar(8) DEFAULT NULL,
-  `projname` varchar(100) DEFAULT NULL,
-  `projnature` varchar(100) DEFAULT NULL,
-  `projtype` varchar(50) DEFAULT NULL,
-  `projdistrict` int(4) DEFAULT NULL,
-  `projlocation` varchar(100) DEFAULT NULL,
-  `projowner` varchar(100) DEFAULT NULL,
-  `certno` varchar(30) DEFAULT NULL,
+  `projid` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `empid` varchar(8) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projname` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projnature` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projtype` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projdistrict` int DEFAULT NULL,
+  `projlocation` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `projowner` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `certno` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`projid`),
   KEY `employers_prodetails` (`empid`),
   CONSTRAINT `employers_prodetails` FOREIGN KEY (`empid`) REFERENCES `employers` (`empid`) ON DELETE CASCADE
@@ -564,8 +564,8 @@ DROP TABLE IF EXISTS `sammy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sammy` (
-  `idno` int(5) NOT NULL AUTO_INCREMENT,
-  `namex` varchar(50) DEFAULT NULL,
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `namex` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -588,9 +588,9 @@ DROP TABLE IF EXISTS `subcounty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `subcounty` (
-  `code` int(5) NOT NULL AUTO_INCREMENT,
+  `code` int NOT NULL AUTO_INCREMENT,
   `name` varchar(25) DEFAULT NULL,
-  `distcode` int(5) DEFAULT '0',
+  `distcode` int DEFAULT '0',
   PRIMARY KEY (`code`),
   KEY `districts_subcounty` (`distcode`),
   CONSTRAINT `districts_subcounty` FOREIGN KEY (`distcode`) REFERENCES `districts` (`distcode`)
@@ -629,8 +629,33 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('bwoye','Samuel Bwoye','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6','Ad');
+INSERT INTO `users` VALUES ('aggrey','Aggrey Ibanda','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6','Do'),('bwoye','Samuel Bwoye','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6','Ad'),('timothy','Timothy Ngobi','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6','Ad');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usertypes`
+--
+
+DROP TABLE IF EXISTS `usertypes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usertypes` (
+  `idno` int NOT NULL AUTO_INCREMENT,
+  `utype` varchar(2) DEFAULT NULL,
+  `description` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`idno`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usertypes`
+--
+
+LOCK TABLES `usertypes` WRITE;
+/*!40000 ALTER TABLE `usertypes` DISABLE KEYS */;
+INSERT INTO `usertypes` VALUES (1,'Ad','Admin'),(2,'Os','Osh'),(3,'DO','District Officer'),(4,'FR','Factory Reporter');
+/*!40000 ALTER TABLE `usertypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -641,8 +666,8 @@ DROP TABLE IF EXISTS `wagetypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wagetypes` (
-  `wagetype` int(11) NOT NULL AUTO_INCREMENT,
-  `wagename` varchar(15) DEFAULT NULL,
+  `wagetype` int NOT NULL AUTO_INCREMENT,
+  `wagename` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`wagetype`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -666,4 +691,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-10  9:06:35
+-- Dump completed on 2020-07-14  9:40:34

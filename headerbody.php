@@ -26,6 +26,7 @@
 </form>';
                     } else {
                         echo '<form action="php/login.php" method="POST">
+                        <select id="mytypes" name="mytypes"><option value="factory">Factory Reporter</option><option value="office">Labour office</option></select>
 <input type="text" name="userid" placeholder="userid">
 <input type="password" name="kpass" placeholder="password">
 <button name="submit" type="submit">Login</button>

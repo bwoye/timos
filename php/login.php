@@ -7,38 +7,66 @@ if (isset($_POST['submit'])) {
 
     $userid = $_POST['userid'];
     $kpass = $_POST['kpass'];
-
-    //Error handlers
-    //Check for empty inputs
+    $mytype = $_POST['mytypes'];
 
     if (empty($userid) || empty($kpass)) {
         header('Location: ../index.php?login=empty');
         exit();
     } else {
-        //Check if user exists
-        $pp = $conn->run("SELECT * FROM users WHERE userid=?", [$userid]);
-        if ($pp->rowCount() < 1) {
-            header("Location: ../index.php?login=error");
-            exit();
-        } else {
-            $kk = $pp->fetch();
-            //Dehashin password
-            $hashedPwd = password_verify($kpass, $kk->kpass);
+  
+        if($mytype == "office"){
+     
+            $pp = $conn->run("SELECT * FROM users WHERE userid=?", [$userid]);
+            if($pp->rowCount() == 1){
+                $kk = $pp->fetch();
+                echo "Am here";
+              
+                $hashedPwd = password_verify($kpass, $kk->kpass);
+    
+                if (!$hashedPwd) {
+                    header("Location: ../index.php?login=error");
+                    exit();
+                } else{
+            
+                    $_SESSION['userid'] = $kk->userid;                
+                    $_SESSION['utype'] = $kk->utype;
+                    $_SESSION['fulname'] = $kk->fulname;
 
-            if (!$hashedPwd) {
+                    echo $_SESSION['utype'].", ".$_SESSION['userid'].", ".$_SESSION['fulname'];
+
+                    //This landing page is different
+                    if($_SESSION['utype'] == "DO"){
+                        //Go to district officer's page
+                        echo "This is page is for listing all employers and contracts in the district";
+                        exit();
+                    }else if($_SESSION['utype'] == "OSH"){
+                        //Osh login things
+                        echo "this is the OSH who is allowed to see all district going ons";
+                    }else if($_SESSION['utype'] == "Admin"){
+                        echo "this is page for over all Admin and  owner of system";
+                        //Admin login things
+                    }else{
+                        unset($_SESSION['userid'],$_SESSION['utype']);
+                        header("Location: ../index.php?login=error");
+                        exit(); 
+                    }
+                    
+                }
+            }else{
+                //no user with those credentials
+                unset($_SESSion['userid'],$_SESSION['utype']);
                 header("Location: ../index.php?login=error");
                 exit();
-            } else if ($hashedPwd) {
-                //Login in user here
-                $_SESSION['userid'] = $kk->userid;                
-                $_SESSION['utype'] = $kk->utype;
-                $_SESSION['fulname'] = $kk->fulname;
-                header("Location: ../index.php?login=success");
-                exit();
             }
+
+        } else{
+            header("Location: ../index.php?login=error");
+            //this is a factory reporter
+
         }
     }
-} else {
+}
+else{
     header("Location: ../index.php?login=error");
     exit();
 }

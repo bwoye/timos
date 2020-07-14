@@ -146,7 +146,7 @@ header .nav-login form {
     padding-top: 15px;
 }
 
-header .nav-login form input {
+header .nav-login form input ,header .nav-login form select {
     float: left;
     width: 140px;
     height: 30px;
