@@ -282,7 +282,7 @@ jq(document).ready(function () {
                             jq('#kinphone').val(m.kinphone);
                             jq('race').val(m.race);
                             jq('#injempadd').val(m.injempadd);
-                            jq('#genser').val(m.gender);
+                            jq('#gender').val(m.gender);
                             jq('empage').val(m.empage);
                             jq('#jobtitle').val(m.jobtitle);
                             jq('#idistcode').val(m.distcode);
@@ -324,7 +324,7 @@ jq(document).ready(function () {
         jq('#kinphone').val('');
         jq('race').val(0);
         jq('#injempadd').val('');
-        jq('#genser').val(0);
+        jq('#gender').val(0);
         jq('empage').val(0);
         jq('#jobtitle').val(0);
         jq('distcode').val(0);

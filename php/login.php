@@ -59,9 +59,27 @@ if (isset($_POST['submit'])) {
             }
 
         } else{
-            header("Location: ../index.php?login=error");
-            //this is a factory reporter
-
+            //Authentitcate user first
+            $mm = $conn->run("SELECT * FROM employers WHERE uemail=:uemail",["uemail"=>$userid]);
+            if($mm->rowCount() == 1){
+                $vv =$mm->fetch();
+                print_r($vv);
+                if($hashedPwd = password_verify($kpass, $vv->epass)){
+                    $_SESSION['userid'] = $kk->userid;                
+                    $_SESSION['utype'] = 'FR';
+                    $_SESSION['empname'] = $vv->empname;
+                    $_SESSION['empid'] = $vv->empid;
+                    header("Location: ../accidentreport.php");
+                    exit();
+                }else{
+                    echo "<br>User not find";
+                    exit();
+                }
+            }else{
+                echo "<br>something went wrong";
+                //header("Location: ../index.php?login=error");
+                exit();
+            }  
         }
     }
 }

@@ -11,30 +11,31 @@
 | natid          | varchar(20)  | YES  |     | NULL    |       |
 | nextofkin      | varchar(50)  | YES  |     | NULL    |       |
 | kinphone       | varchar(15)  | YES  |     | NULL    |       |
-| race           | int(4)       | YES  |     | 0       |       |
+| race           | int          | YES  |     | 0       |       |
 | injempadd      | varchar(100) | YES  |     | NULL    |       |
 | gender         | varchar(6)   | NO   |     | NULL    |       |
-| empage         | int(3)       | YES  |     | 0       |       |
-| jobtitle       | int(5)       | YES  | MUL | 0       |       |
-| distcode       | int(3)       | YES  |     | 0       |       |
-| saza           | int(6)       | YES  |     | 0       |       |
+| empage         | int          | YES  |     | 0       |       |
+| jobtitle       | int          | YES  | MUL | 0       |       |
+| distcode       | int          | YES  |     | 0       |       |
+| saza           | int          | YES  |     | 0       |       |
 | village        | varchar(25)  | YES  |     | NULL    |       |
-| acctype        | int(5)       | YES  |     | NULL    |       |
-| accagent       | int(5)       | YES  |     | NULL    |       |
+| acctype        | int          | YES  |     | NULL    |       |
+| accagent       | int          | YES  |     | NULL    |       |
 | accresult      | varchar(20)  | YES  |     | NULL    |       |
 | hospital       | varchar(50)  | YES  |     | NULL    |       |
 | workno         | varchar(5)   | YES  |     | NULL    |       |
-| accinjuries    | int(4)       | YES  |     | 0       |       |
-| bodyinjury     | int(5)       | YES  |     | NULL    |       |
-| accplace       | int(5)       | YES  |     | 0       |       |
+| accinjuries    | int          | YES  |     | 0       |       |
+| bodyinjury     | int          | YES  |     | NULL    |       |
+| accplace       | int          | YES  |     | 0       |       |
 | accdescription | varchar(50)  | YES  |     | NULL    |       |
-| doingwhat      | int(5)       | YES  |     | 0       |       |
-| monthly        | int(11)      | YES  |     | 0       |       |
-| wdaily         | int(11)      | YES  |     | 0       |       |
-| wweekly        | int(11)      | YES  |     | 0       |       |
+| doingwhat      | int          | YES  |     | 0       |       |
+| monthly        | int          | YES  |     | 0       |       |
+| wdaily         | int          | YES  |     | 0       |       |
+| wweekly        | int          | YES  |     | 0       |       |
 | empid          | varchar(8)   | YES  |     | NULL    |       |
+| seen           | varchar(3)   | YES  |     | No      |       |
 +----------------+--------------+------+-----+---------+-------+
-30 rows in set (0.00 sec)
+31 rows in set (0.00 sec)
 */
 //include_once '../../includes/mypaths.php';
 class Accreport extends DataObject
@@ -69,7 +70,8 @@ class Accreport extends DataObject
         "monthly"=>0,
         "wdaily"=>0,
         "wweekly"=>0,
-        "empid"=>''  
+        "empid"=>'',
+        "seen"=>'No'  
     );
 
     public static function getMember($accid)
@@ -114,7 +116,7 @@ class Accreport extends DataObject
 
         $conn->beginTransaction();
         try {
-            $conn->run("INSERT INTO " . TBL_ACCREPORT . " VALUES(:accid,:projid,:injpname,:accdate,:acctime,:natid,:nextofkin,:kinphone,:race,:injempadd,:gender,:empage,:jobtitle,:distcode,:saza,:village,:acctype,:accagent,:accresult,:hospital,:workno,:accinjuries,:bodyinjury,:accplace,:accdescription,:doingwhat,:monthly,:wdaily,:wweekly,:empid)", $this->data);
+            $conn->run("INSERT INTO " . TBL_ACCREPORT . " VALUES(:accid,:projid,:injpname,:accdate,:acctime,:natid,:nextofkin,:kinphone,:race,:injempadd,:gender,:empage,:jobtitle,:distcode,:saza,:village,:acctype,:accagent,:accresult,:hospital,:workno,:accinjuries,:bodyinjury,:accplace,:accdescription,:doingwhat,:monthly,:wdaily,:wweekly,:empid,:seen)", $this->data);
             $conn->commit();
             $response['accid'] = $this->data['accid'];
             $response['error'] = false;
@@ -148,6 +150,8 @@ class Accreport extends DataObject
     public function editRec()
     {
         $conn = parent::connect();
+
+        unset($this->data['seen']);
 
         $pp = $conn->run("UPDATE " . TBL_ACCREPORT . " SET projid=:projid,injpname=:injpname,accdate=:accdate,acctime=:acctime,natid=:natid,nextofkin=:nextofkin,kinphone=:kinphone,race=:race,injempadd=:injempadd,gender=:gender,empage=:empage,jobtitle=:jobtitle,distcode=:distcode,saza=:saza,village=:village,acctype=:acctype,accagent=:accagent,accresult=:accresult,hospital=:hospital,workno=:workno,accinjuries=:accinjuries,bodyinjury=:bodyinjury,accplace=:accplace,accdescription=:accdescription,doingwhat=:doingwhat,monthly=:monthly,wdaily=:wdaily,wwekly=:wweekly,empid=:empid WHERE accid=:accid",$this->data);
 
