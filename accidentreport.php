@@ -183,7 +183,7 @@ session_start();
 <body>
 <section class="main-container">
     <div class="main-wrapper">
-        <div class="thebuttons"><h2>Accident Report</h2><form id="moveoutform" action="php/logout.php" method="POST"><button id="myleave" type="submit">Logout</button></form></div>
+        <div class="thebuttons"><h2>Accident Report</h2><form id="moveoutform" action="php/logout.php" method="POST"><button id="myleave" name="submit" type="submit">Logout</button></form></div>
         
         <div style="clear:both"></div>
 
