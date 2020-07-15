@@ -19,8 +19,7 @@ if (isset($_POST['submit'])) {
             $pp = $conn->run("SELECT * FROM users WHERE userid=?", [$userid]);
             if($pp->rowCount() == 1){
                 $kk = $pp->fetch();
-                echo "Am here";
-              
+                
                 $hashedPwd = password_verify($kpass, $kk->kpass);
     
                 if (!$hashedPwd) {
@@ -33,17 +32,17 @@ if (isset($_POST['submit'])) {
                     $_SESSION['fulname'] = $kk->fulname;
 
                     echo $_SESSION['utype'].", ".$_SESSION['userid'].", ".$_SESSION['fulname'];
-
+                    
                     //This landing page is different
                     if($_SESSION['utype'] == "DO"){
                         //Go to district officer's page
-                        echo "This is page is for listing all employers and contracts in the district";
+                        echo "<br>This is page is for listing all employers and contracts in the district";
                         exit();
                     }else if($_SESSION['utype'] == "OSH"){
                         //Osh login things
-                        echo "this is the OSH who is allowed to see all district going ons";
-                    }else if($_SESSION['utype'] == "Admin"){
-                        echo "this is page for over all Admin and  owner of system";
+                        echo "<br>this is the OSH who is allowed to see all district going ons";
+                    }else if($_SESSION['utype'] == "Ad"){
+                        echo "<br>this is page for over all Admin and  owner of system";
                         //Admin login things
                     }else{
                         unset($_SESSION['userid'],$_SESSION['utype']);
