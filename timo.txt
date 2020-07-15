@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Linux (x86_64)
 --
 -- Host: localhost    Database: timo
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	8.0.20-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `accagents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accagents` (
-  `agentid` int(11) NOT NULL AUTO_INCREMENT,
+  `agentid` int NOT NULL AUTO_INCREMENT,
   `agentname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`agentid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -71,7 +71,7 @@ DROP TABLE IF EXISTS `accmachines`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accmachines` (
-  `machineid` int(11) NOT NULL AUTO_INCREMENT,
+  `machineid` int NOT NULL AUTO_INCREMENT,
   `machinename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`machineid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -94,7 +94,7 @@ DROP TABLE IF EXISTS `accplaces`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accplaces` (
-  `accplace` int(11) NOT NULL AUTO_INCREMENT,
+  `accplace` int NOT NULL AUTO_INCREMENT,
   `place` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`accplace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -126,28 +126,29 @@ CREATE TABLE `accreport` (
   `natid` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `nextofkin` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `kinphone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `race` int(11) DEFAULT '0',
+  `race` int DEFAULT '0',
   `injempadd` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `gender` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `empage` int(11) DEFAULT '0',
-  `jobtitle` int(11) DEFAULT '0',
-  `distcode` int(11) DEFAULT '0',
-  `saza` int(11) DEFAULT '0',
+  `empage` int DEFAULT '0',
+  `jobtitle` int DEFAULT '0',
+  `distcode` int DEFAULT '0',
+  `saza` int DEFAULT '0',
   `village` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `acctype` int(11) DEFAULT NULL,
-  `accagent` int(11) DEFAULT NULL,
+  `acctype` int DEFAULT NULL,
+  `accagent` int DEFAULT NULL,
   `accresult` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `hospital` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `workno` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `accinjuries` int(11) DEFAULT '0',
-  `bodyinjury` int(11) DEFAULT NULL,
-  `accplace` int(11) DEFAULT '0',
+  `accinjuries` int DEFAULT '0',
+  `bodyinjury` int DEFAULT NULL,
+  `accplace` int DEFAULT '0',
   `accdescription` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `doingwhat` int(11) DEFAULT '0',
-  `monthly` int(11) DEFAULT '0',
-  `wdaily` int(11) DEFAULT '0',
-  `wweekly` int(11) DEFAULT '0',
+  `doingwhat` int DEFAULT '0',
+  `monthly` int DEFAULT '0',
+  `wdaily` int DEFAULT '0',
+  `wweekly` int DEFAULT '0',
   `empid` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `seen` varchar(3) COLLATE utf8mb4_general_ci DEFAULT 'No',
   PRIMARY KEY (`accid`),
   KEY `jobs_accreport` (`jobtitle`),
   KEY `projdetails_accreport` (`projid`),
@@ -162,7 +163,7 @@ CREATE TABLE `accreport` (
 
 LOCK TABLES `accreport` WRITE;
 /*!40000 ALTER TABLE `accreport` DISABLE KEYS */;
-INSERT INTO `accreport` VALUES ('mu1','1Ji','mukisa fred','2020-06-21 21:00:00','20:05:00','45896','john tabuti','0774830710',0,'35 jinja','',0,11,4,261,'namugongo',10,5,'severe injury','iganga','yes',16,5,3,'hjdkdkdk',18,25000,0,0,'1ka');
+INSERT INTO `accreport` VALUES ('mu1','1Ji','mukisa fred','2020-06-21 21:00:00','20:05:00','45896','john tabuti','0774830710',0,'35 jinja','',0,11,4,261,'namugongo',10,5,'severe injury','iganga','yes',16,5,3,'hjdkdkdk',18,25000,0,0,'1ka','No');
 /*!40000 ALTER TABLE `accreport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +175,7 @@ DROP TABLE IF EXISTS `acctypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `acctypes` (
-  `typeno` int(11) NOT NULL AUTO_INCREMENT,
+  `typeno` int NOT NULL AUTO_INCREMENT,
   `nametype` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`typeno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -198,7 +199,7 @@ DROP TABLE IF EXISTS `bloggers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bloggers` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `emailadd` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `phone` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `fulname` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -229,7 +230,7 @@ DROP TABLE IF EXISTS `bodyinjure`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bodyinjure` (
-  `bno` int(11) NOT NULL AUTO_INCREMENT,
+  `bno` int NOT NULL AUTO_INCREMENT,
   `injtype` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`bno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -253,7 +254,7 @@ DROP TABLE IF EXISTS `districts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `districts` (
-  `distcode` int(11) NOT NULL AUTO_INCREMENT,
+  `distcode` int NOT NULL AUTO_INCREMENT,
   `distname` varchar(50) DEFAULT NULL,
   `Region` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`distcode`)
@@ -278,7 +279,7 @@ DROP TABLE IF EXISTS `doingwhats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `doingwhats` (
-  `what` int(11) NOT NULL AUTO_INCREMENT,
+  `what` int NOT NULL AUTO_INCREMENT,
   `actions` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`what`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -306,7 +307,7 @@ CREATE TABLE `employers` (
   `empname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `phyadd` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `uemail` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `distcode` int(11) DEFAULT '0',
+  `distcode` int DEFAULT '0',
   `emptel` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `epass` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'No password',
   PRIMARY KEY (`empid`)
@@ -319,7 +320,7 @@ CREATE TABLE `employers` (
 
 LOCK TABLES `employers` WRITE;
 /*!40000 ALTER TABLE `employers` DISABLE KEYS */;
-INSERT INTO `employers` VALUES ('1','Devpoint','54157 Morningstar Court','tparysowna0@msu.edu',1,'691-415-8991','No Password'),('10','Vinder','4166 Anniversary Court','sstove9@webs.com',2,'787-906-9618','No Password'),('100','Vitz','plot 5 owen road','wdoche2r@wikimedia.org',3,'712-825-4746','No Password'),('12','Buzzbean','2915 Anthes Terrace','cbradlaughb@bigcartel.com',5,'476-771-3638','No Password'),('13','Skiptube','12 American Park','rtinniswoodc@gizmodo.com',6,'221-277-3850','No Password'),('14','Fivespan','79 Bluestem Street','lcleifed@com.com',7,'242-117-1984','No Password'),('16','Yata','32976 Bowman Drive','kwatkinsf@jugem.jp',8,'275-345-7822','No Password'),('17','Jabbercube','1 Morningstar Pass','fseldnerg@php.net',9,'343-201-3973','No Password'),('18','Digitube','30 Hanover Court','rtelezhkinh@yellowpages.com',10,'517-379-5308','No Password'),('19','Yabox','1951 Mccormick Park','moeni@virginia.edu',9,'598-717-5284','No Password'),('1bw','bwoye construction','plot 4 main street','bwoye@gmail.com',3,'0755021543','No password'),('1ka','kaliro construction limited','plot 2 zibondo road','sam@kcl.com',27,'0772501326','No password'),('1Ki','Kigge industrial components','kawempe road plot 1','sammy@gmail.com',1,'0772501326','No password'),('20','Thoughtblab','66 7th Plaza','dstledgerj@who.int',11,'226-591-5249','No Password'),('23','Topicware','42062 Summerview Point','ddominettim@patch.com',10,'118-348-0899','No Password'),('24','Vitz','49195 Hanson Crossing','ojaimen@apple.com',13,'700-954-7073','No Password'),('25','Livetube','64459 Anzinger Place','ptattersfieldo@lulu.com',14,'655-131-0656','No Password'),('26','Jetwire','3300 Clyde Gallagher Lane','nbertlinp@webeden.co.uk',6,'576-207-5070','No Password'),('28','Twinder','3 Nancy Parkway','gcarleyr@newsvine.com',8,'628-863-0065','No Password'),('29','Topicware','17418 Barnett Hill','fsavorys@ebay.co.uk',14,'488-174-3623','No Password'),('2ka','kaliro sugar works','','bwoye@gmail.com',7,'0772501326','No password'),('3','Kwilith','2 Schurz Pass','kwellsman2@engadget.com',8,'324-710-0610','No Password'),('31','Digitube','5 Eastlawn Court','aickovu@dagondesign.com',7,'152-533-7573','No Password'),('32','Jabbersphere','2 Golf Course Place','dclevelandv@xinhuanet.com',17,'144-983-9190','No Password'),('33','Kampla pharma','plot 1 luzira close','sam@yahoo.com',1,'07725013256','No Password'),('34','Gigaclub','87 Packers Avenue','sjevesx@canalblog.com',10,'824-940-9919','No Password'),('35','Twimm','5 Scofield Crossing','snelligany@forbes.com',4,'748-407-0493','No Password'),('36','Yamia','542 Warrior Trail','jaspellz@jalbum.net',5,'193-375-8345','No Password'),('38','Voolia','53230 Eggendart Parkway','wmcart11@prlog.org',19,'610-169-6918','No Password'),('39','Yadel','93 Corben Park','ameany12@simplemachines.org',6,'619-391-0576','No Password'),('4','Jamia','49225 Petterle Hill','mbroz3@twitter.com',20,'159-105-4971','No Password'),('40','Linkbuzz','6 Marcy Drive','saffuso13@eventbrite.com',10,'164-255-2257','No Password'),('41','Voonix','56 Parkside Alley','achitty14@stanford.edu',10,'187-133-6632','No Password'),('43','Realfire','58760 Warrior Road','jshall16@noaa.gov',21,'725-919-1682','No Password'),('45','Fivechat','5 Hovde Street','mhenrichsen18@tripod.com',10,'925-167-7477','No Password'),('46','Dabshots','70 Vernon Alley','aledner19@istockphoto.com',22,'694-973-9649','No Password'),('47','Photobean','03 Esker Crossing','mhalfacree1a@umich.edu',15,'235-673-3559','No Password'),('49','Youopia','2 Kim Way','kbutterly1c@smugmug.com',5,'991-876-6025','No Password'),('5','Meevee','1 Scofield Court','mjones4@sbwire.com',7,'326-622-8554','No Password'),('50','Voonte','0170 Mallory Trail','hcromley1d@tinypic.com',10,'225-373-0361','No Password'),('51','Dabtype','2599 Starling Point','xdouty1e@merriam-webster.com',15,'269-342-9375','No Password'),('52','Topiczoom','0241 Daystar Road','lquemby1f@businesswire.com',8,'418-573-1601','No Password'),('54','Thoughtstorm','27 Calypso Crossing','gkiossel1h@alexa.com',7,'585-367-0952','No Password'),('55','Bubblebox','73175 Buhler Way','acollishaw1i@spotify.com',5,'917-803-0724','No Password'),('56','Edgetag','275 Service Point','fseagood1j@cpanel.net',10,'558-565-7772','No Password'),('57','Browsecat','357 Kenwood Hill','bschroeder1k@cdc.gov',10,'456-497-0091','No Password'),('58','Rhyloo','801 School Park','spinkstone1l@godaddy.com',24,'662-385-1852','No Password'),('59','Zoomcast','554 Golden Leaf Lane','tantoney1m@sciencedirect.com',25,'140-956-8237','No Password'),('6','Twinder','9889 Nancy Point','tnoto5@pen.io',26,'474-579-9076','No Password'),('60','Bubbletube','2 Clemons Junction','msiddle1n@weibo.com',27,'271-465-3743','No Password'),('61','Trunyx','624 Center Plaza','lgoodlud1o@webs.com',28,'879-572-0163','No Password'),('62','Thoughtworks','89605 Kim Drive','jphilippart1p@nps.gov',6,'631-157-1189','No Password'),('63','Vinte','9533 Westerfield Terrace','ksproston1q@dailymail.co.uk',5,'786-777-5010','No Password'),('64','Flipstorm','63 Paget Circle','zmussard1r@yellowpages.com',10,'925-587-4067','No Password'),('65','sammy','80144 Anthes Park','kbasezzi1s@weather.com',51,'999-161-5196','No Password'),('66','Livetube','3 Westport Drive','cbruneau1t@marketwatch.com',28,'426-669-3010','No Password'),('67','Realbridge','42491 Summerview Circle','eedeson1u@tinyurl.com',25,'759-999-3990','No Password'),('68','Oyoba','15848 Elka Point','aratledge1v@pbs.org',28,'845-854-8741','No Password'),('69','Dabvine','7 Hallows Terrace','screw1w@macromedia.com',11,'577-603-7156','No Password'),('7','Realbridge','15 Weeping Birch Road','kmarquand6@bing.com',30,'179-999-2234','No Password'),('71','Thoughtblab','672 Tony Place','phaggerston1y@cnn.com',30,'563-958-6501','No Password'),('72','Trilith','630 Blaine Point','msouttar1z@geocities.com',8,'757-691-5007','No Password'),('73','Fivechat','885 Katie Alley','scregan20@ezinearticles.com',10,'237-310-5070','No Password'),('76','Pixoboo','4626 Roth Junction','dlewisham23@parallels.com',8,'840-255-9836','No Password'),('78','Dabfeed','1 Pierstorff Hill','alubman25@nih.gov',31,'764-613-9469','No Password'),('79','Thoughtworks','420 Everett Park','tmougenel26@themeforest.net',4,'455-464-2867','No Password'),('80','Demizz','8576 Namekagon Crossing','rdaulton27@nature.com',8,'936-852-2060','No Password'),('81','Yombu','7 Butternut Avenue','rfasse28@un.org',31,'521-760-9940','No Password'),('82','Thoughtstorm','8370 Village Green Plaza','bguilleton29@spiegel.de',9,'500-736-5235','No Password'),('83','Voonder','5292 Onsgard Crossing','rgrzegorzewicz2a@tripod.com',5,'326-224-5729','No Password'),('84','Muxo','2 Fordem Court','festick2b@google.com.au',30,'330-309-1687','No Password'),('85','Edgewire','96 Pleasure Court','mgittose2c@163.com',8,'569-677-6443','No Password'),('86','Gabvine','3633 Bowman Lane','dpeasey2d@technorati.com',6,'339-124-3190','No Password'),('87','Skiptube','34 Steensland Road','gteague2e@zimbio.com',32,'319-212-3692','No Password'),('88','Dabshots','12 Derek Terrace','mwhayman2f@nbcnews.com',31,'865-947-5294','No Password'),('89','Kare','25 Susan Circle','fvandriel2g@altervista.org',5,'919-261-0216','No Password'),('9','Twitterbeat','21909 Glendale Alley','fambresin8@clickbank.net',7,'771-376-3107','No Password'),('90','Samuel Bwoye','24223 Ramsey Terrace','lmaccrann2h@virginia.edu',33,'961-343-2290','No Password'),('92','Quimba','61 Badeau Pass','dickowics2j@mtv.com',8,'980-595-6265','No Password'),('93','Jabberstorm','1809 Loomis Pass','aglasscoe2k@etsy.com',33,'283-525-7327','No Password'),('94','Ozu','9187 Shopko Point','amctague2l@apple.com',31,'381-628-2282','No Password'),('95','Jayo','45558 Milwaukee Terrace','dremirez2m@weather.com',10,'567-979-1960','No Password'),('96','Linktype','14 Upham Plaza','mcleef2n@flickr.com',5,'584-749-8714','No Password'),('97','Feedbug','65282 Mallard Terrace','egobel2o@rambler.ru',34,'104-389-2031','No Password'),('98','Youopia','704 Stephen Alley','dbuglass2p@cdc.gov',35,'253-574-4353','No Password'),('99','Roodel','565 Cascade Center','pstandingford2q@tamu.edu',6,'408-860-6078','No Password');
+INSERT INTO `employers` VALUES ('1','Devpoint','54157 Morningstar Court','tparysowna0@msu.edu',1,'691-415-8991','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('10','Vinder','4166 Anniversary Court','sstove9@webs.com',2,'787-906-9618','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('100','Vitz','plot 5 owen road','wdoche2r@wikimedia.org',3,'712-825-4746','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('12','Buzzbean','2915 Anthes Terrace','cbradlaughb@bigcartel.com',5,'476-771-3638','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('13','Skiptube','12 American Park','rtinniswoodc@gizmodo.com',6,'221-277-3850','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('14','Fivespan','79 Bluestem Street','lcleifed@com.com',7,'242-117-1984','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('16','Yata','32976 Bowman Drive','kwatkinsf@jugem.jp',8,'275-345-7822','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('17','Jabbercube','1 Morningstar Pass','fseldnerg@php.net',9,'343-201-3973','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('18','Digitube','30 Hanover Court','rtelezhkinh@yellowpages.com',10,'517-379-5308','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('19','Yabox','1951 Mccormick Park','moeni@virginia.edu',9,'598-717-5284','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('1bw','bwoye construction','plot 4 main street','bwoye@gmail.com',3,'0755021543','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('1ka','kaliro construction limited','plot 2 zibondo road','sam@kcl.com',27,'0772501326','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('1Ki','Kigge industrial components','kawempe road plot 1','sammy@gmail.com',1,'0772501326','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('20','Thoughtblab','66 7th Plaza','dstledgerj@who.int',11,'226-591-5249','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('23','Topicware','42062 Summerview Point','ddominettim@patch.com',10,'118-348-0899','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('24','Vitz','49195 Hanson Crossing','ojaimen@apple.com',13,'700-954-7073','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('25','Livetube','64459 Anzinger Place','ptattersfieldo@lulu.com',14,'655-131-0656','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('26','Jetwire','3300 Clyde Gallagher Lane','nbertlinp@webeden.co.uk',6,'576-207-5070','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('28','Twinder','3 Nancy Parkway','gcarleyr@newsvine.com',8,'628-863-0065','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('29','Topicware','17418 Barnett Hill','fsavorys@ebay.co.uk',14,'488-174-3623','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('2ka','kaliro sugar works','','bwoye@gmail.com',7,'0772501326','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('3','Kwilith','2 Schurz Pass','kwellsman2@engadget.com',8,'324-710-0610','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('31','Digitube','5 Eastlawn Court','aickovu@dagondesign.com',7,'152-533-7573','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('32','Jabbersphere','2 Golf Course Place','dclevelandv@xinhuanet.com',17,'144-983-9190','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('33','Kampla pharma','plot 1 luzira close','sam@yahoo.com',1,'07725013256','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('34','Gigaclub','87 Packers Avenue','sjevesx@canalblog.com',10,'824-940-9919','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('35','Twimm','5 Scofield Crossing','snelligany@forbes.com',4,'748-407-0493','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('36','Yamia','542 Warrior Trail','jaspellz@jalbum.net',5,'193-375-8345','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('38','Voolia','53230 Eggendart Parkway','wmcart11@prlog.org',19,'610-169-6918','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('39','Yadel','93 Corben Park','ameany12@simplemachines.org',6,'619-391-0576','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('4','Jamia','49225 Petterle Hill','mbroz3@twitter.com',20,'159-105-4971','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('40','Linkbuzz','6 Marcy Drive','saffuso13@eventbrite.com',10,'164-255-2257','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('41','Voonix','56 Parkside Alley','achitty14@stanford.edu',10,'187-133-6632','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('43','Realfire','58760 Warrior Road','jshall16@noaa.gov',21,'725-919-1682','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('45','Fivechat','5 Hovde Street','mhenrichsen18@tripod.com',10,'925-167-7477','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('46','Dabshots','70 Vernon Alley','aledner19@istockphoto.com',22,'694-973-9649','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('47','Photobean','03 Esker Crossing','mhalfacree1a@umich.edu',15,'235-673-3559','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('49','Youopia','2 Kim Way','kbutterly1c@smugmug.com',5,'991-876-6025','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('5','Meevee','1 Scofield Court','mjones4@sbwire.com',7,'326-622-8554','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('50','Voonte','0170 Mallory Trail','hcromley1d@tinypic.com',10,'225-373-0361','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('51','Dabtype','2599 Starling Point','xdouty1e@merriam-webster.com',15,'269-342-9375','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('52','Topiczoom','0241 Daystar Road','lquemby1f@businesswire.com',8,'418-573-1601','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('54','Thoughtstorm','27 Calypso Crossing','gkiossel1h@alexa.com',7,'585-367-0952','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('55','Bubblebox','73175 Buhler Way','acollishaw1i@spotify.com',5,'917-803-0724','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('56','Edgetag','275 Service Point','fseagood1j@cpanel.net',10,'558-565-7772','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('57','Browsecat','357 Kenwood Hill','bschroeder1k@cdc.gov',10,'456-497-0091','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('58','Rhyloo','801 School Park','spinkstone1l@godaddy.com',24,'662-385-1852','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('59','Zoomcast','554 Golden Leaf Lane','tantoney1m@sciencedirect.com',25,'140-956-8237','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('6','Twinder','9889 Nancy Point','tnoto5@pen.io',26,'474-579-9076','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('60','Bubbletube','2 Clemons Junction','msiddle1n@weibo.com',27,'271-465-3743','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('61','Trunyx','624 Center Plaza','lgoodlud1o@webs.com',28,'879-572-0163','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('62','Thoughtworks','89605 Kim Drive','jphilippart1p@nps.gov',6,'631-157-1189','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('63','Vinte','9533 Westerfield Terrace','ksproston1q@dailymail.co.uk',5,'786-777-5010','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('64','Flipstorm','63 Paget Circle','zmussard1r@yellowpages.com',10,'925-587-4067','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('65','sammy','80144 Anthes Park','kbasezzi1s@weather.com',51,'999-161-5196','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('66','Livetube','3 Westport Drive','cbruneau1t@marketwatch.com',28,'426-669-3010','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('67','Realbridge','42491 Summerview Circle','eedeson1u@tinyurl.com',25,'759-999-3990','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('68','Oyoba','15848 Elka Point','aratledge1v@pbs.org',28,'845-854-8741','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('69','Dabvine','7 Hallows Terrace','screw1w@macromedia.com',11,'577-603-7156','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('7','Realbridge','15 Weeping Birch Road','kmarquand6@bing.com',30,'179-999-2234','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('71','Thoughtblab','672 Tony Place','phaggerston1y@cnn.com',30,'563-958-6501','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('72','Trilith','630 Blaine Point','msouttar1z@geocities.com',8,'757-691-5007','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('73','Fivechat','885 Katie Alley','scregan20@ezinearticles.com',10,'237-310-5070','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('76','Pixoboo','4626 Roth Junction','dlewisham23@parallels.com',8,'840-255-9836','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('78','Dabfeed','1 Pierstorff Hill','alubman25@nih.gov',31,'764-613-9469','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('79','Thoughtworks','420 Everett Park','tmougenel26@themeforest.net',4,'455-464-2867','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('80','Demizz','8576 Namekagon Crossing','rdaulton27@nature.com',8,'936-852-2060','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('81','Yombu','7 Butternut Avenue','rfasse28@un.org',31,'521-760-9940','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('82','Thoughtstorm','8370 Village Green Plaza','bguilleton29@spiegel.de',9,'500-736-5235','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('83','Voonder','5292 Onsgard Crossing','rgrzegorzewicz2a@tripod.com',5,'326-224-5729','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('84','Muxo','2 Fordem Court','festick2b@google.com.au',30,'330-309-1687','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('85','Edgewire','96 Pleasure Court','mgittose2c@163.com',8,'569-677-6443','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('86','Gabvine','3633 Bowman Lane','dpeasey2d@technorati.com',6,'339-124-3190','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('87','Skiptube','34 Steensland Road','gteague2e@zimbio.com',32,'319-212-3692','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('88','Dabshots','12 Derek Terrace','mwhayman2f@nbcnews.com',31,'865-947-5294','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('89','Kare','25 Susan Circle','fvandriel2g@altervista.org',5,'919-261-0216','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('9','Twitterbeat','21909 Glendale Alley','fambresin8@clickbank.net',7,'771-376-3107','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('90','Samuel Bwoye','24223 Ramsey Terrace','lmaccrann2h@virginia.edu',33,'961-343-2290','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('92','Quimba','61 Badeau Pass','dickowics2j@mtv.com',8,'980-595-6265','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('93','Jabberstorm','1809 Loomis Pass','aglasscoe2k@etsy.com',33,'283-525-7327','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('94','Ozu','9187 Shopko Point','amctague2l@apple.com',31,'381-628-2282','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('95','Jayo','45558 Milwaukee Terrace','dremirez2m@weather.com',10,'567-979-1960','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('96','Linktype','14 Upham Plaza','mcleef2n@flickr.com',5,'584-749-8714','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('97','Feedbug','65282 Mallard Terrace','egobel2o@rambler.ru',34,'104-389-2031','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('98','Youopia','704 Stephen Alley','dbuglass2p@cdc.gov',35,'253-574-4353','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6'),('99','Roodel','565 Cascade Center','pstandingford2q@tamu.edu',6,'408-860-6078','$2y$10$/xiPSIvPHxGTgkO6OK6IGu2zpXi4RRXISXyhhqzHRmnDDVy19vww6');
 /*!40000 ALTER TABLE `employers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -332,9 +333,9 @@ DROP TABLE IF EXISTS `empwages`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `empwages` (
   `accid` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `monthly` int(11) DEFAULT '0',
-  `weekly` int(11) DEFAULT '0',
-  `daily` int(11) DEFAULT '0',
+  `monthly` int DEFAULT '0',
+  `weekly` int DEFAULT '0',
+  `daily` int DEFAULT '0',
   PRIMARY KEY (`accid`),
   CONSTRAINT `accreport_empwages` FOREIGN KEY (`accid`) REFERENCES `accreport` (`accid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -357,12 +358,12 @@ DROP TABLE IF EXISTS `factories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `factories` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `empid` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `factoryname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `phyadd` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `factorytel` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `distcode` int(11) DEFAULT '0',
+  `distcode` int DEFAULT '0',
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -384,7 +385,7 @@ DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `images` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `medreport` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `supimage` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `accid` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -409,7 +410,7 @@ DROP TABLE IF EXISTS `injurynature`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `injurynature` (
-  `injnature` int(11) NOT NULL AUTO_INCREMENT,
+  `injnature` int NOT NULL AUTO_INCREMENT,
   `nature` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`injnature`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -433,7 +434,7 @@ DROP TABLE IF EXISTS `jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `jobs` (
-  `jobid` int(11) NOT NULL AUTO_INCREMENT,
+  `jobid` int NOT NULL AUTO_INCREMENT,
   `description` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`jobid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -457,7 +458,7 @@ DROP TABLE IF EXISTS `medicalreport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `medicalreport` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `accid` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `medname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`),
@@ -483,7 +484,7 @@ DROP TABLE IF EXISTS `mycountries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mycountries` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `namex` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -507,7 +508,7 @@ DROP TABLE IF EXISTS `myparts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `myparts` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `bparts` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -536,7 +537,7 @@ CREATE TABLE `projdetails` (
   `projname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `projnature` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `projtype` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `projdistrict` int(11) DEFAULT NULL,
+  `projdistrict` int DEFAULT NULL,
   `projlocation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `projowner` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `certno` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -564,7 +565,7 @@ DROP TABLE IF EXISTS `sammy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sammy` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `namex` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`idno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -588,9 +589,9 @@ DROP TABLE IF EXISTS `subcounty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `subcounty` (
-  `code` int(11) NOT NULL AUTO_INCREMENT,
+  `code` int NOT NULL AUTO_INCREMENT,
   `name` varchar(25) DEFAULT NULL,
-  `distcode` int(11) DEFAULT '0',
+  `distcode` int DEFAULT '0',
   PRIMARY KEY (`code`),
   KEY `districts_subcounty` (`distcode`),
   CONSTRAINT `districts_subcounty` FOREIGN KEY (`distcode`) REFERENCES `districts` (`distcode`)
@@ -641,7 +642,7 @@ DROP TABLE IF EXISTS `usertypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usertypes` (
-  `idno` int(11) NOT NULL AUTO_INCREMENT,
+  `idno` int NOT NULL AUTO_INCREMENT,
   `utype` varchar(2) DEFAULT NULL,
   `description` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`idno`)
@@ -666,7 +667,7 @@ DROP TABLE IF EXISTS `wagetypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wagetypes` (
-  `wagetype` int(11) NOT NULL AUTO_INCREMENT,
+  `wagetype` int NOT NULL AUTO_INCREMENT,
   `wagename` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`wagetype`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -691,4 +692,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-15  8:41:18
+-- Dump completed on 2020-07-15 13:12:20
