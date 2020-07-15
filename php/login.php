@@ -36,11 +36,13 @@ if (isset($_POST['submit'])) {
                     //This landing page is different
                     if($_SESSION['utype'] == "DO"){
                         //Go to district officer's page
-                        echo "<br>This is page is for listing all employers and contracts in the district";
+                        echo "<br>This is landing page is for listing all employers and contracts in the district";
                         exit();
-                    }else if($_SESSION['utype'] == "OSH"){
+                    }else if($_SESSION['utype'] == "Os"){
                         //Osh login things
-                        echo "<br>this is the OSH who is allowed to see all district going ons";
+                        header("Location: ../official.html");
+                        exit();
+                exit();
                     }else if($_SESSION['utype'] == "Ad"){
                         echo "<br>this is page for over all Admin and  owner of system";
                         //Admin login things
@@ -63,7 +65,6 @@ if (isset($_POST['submit'])) {
             $mm = $conn->run("SELECT * FROM employers WHERE uemail=:uemail",["uemail"=>$userid]);
             if($mm->rowCount() == 1){
                 $vv =$mm->fetch();
-                print_r($vv);
                 if($hashedPwd = password_verify($kpass, $vv->epass)){
                     $_SESSION['userid'] = $kk->userid;                
                     $_SESSION['utype'] = 'FR';

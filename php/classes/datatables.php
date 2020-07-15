@@ -22,3 +22,4 @@ define("TBL_SUBCOUNTY","subcounty");
 define("TBL_IMAGES","images");
 define("TBL_COUNTRY","mycountries");
 define("TBL_BLOG","bloggers");
+define("TBL_UTYPES","usertypes");
